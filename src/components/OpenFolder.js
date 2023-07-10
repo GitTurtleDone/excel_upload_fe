@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios, { AxiosResponse } from "axios";
-import OpenFolder from "./components/OpenFolder";
 
-function App() {
+function OpenFolder() {
   const [folderPath, setFolderPath] = useState("");
   const handleClick = () => {
     // fetch("http://localhost:5208/OpenFolder")
@@ -25,14 +24,20 @@ function App() {
     // Do something with the selected folder path
   };
 
-  const handleInputChange = () => {
-    setFolderPath(folderPath);
+  const handleInputChange = (e) => {
+    setFolderPath(e.target.value);
   };
 
   return (
     <div>
-      <OpenFolder />
+      <button onClick={handleClick}>Browse</button>
+      <input
+        type="text"
+        value={folderPath}
+        onChange={handleInputChange}
+      ></input>
     </div>
   );
 }
-export default App;
+
+export default OpenFolder;
